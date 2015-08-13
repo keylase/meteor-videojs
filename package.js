@@ -1,15 +1,15 @@
 Package.describe({
-  name:"yong:meteor-videojs",
-  summary: "Video.js 4.12.7",
-  version: "1.1.1",
+  name:"keylase:meteor-videojs",
+  summary: "Fork from yong:videojs with vast and hls supporting",
+  version: "1.1.3",
   documentation: 'README.md',
-  git: " https://github.com/feelsys/meteor-videojs.git "
+  git: "https://github.com/keylase/meteor-videojs.git "
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('METEOR@0.9.3');
   api.addFiles([
-  	'yong:meteor-videojs.js',
+  	'meteor-videojs.js',
     'video-js/video.js',
     'video-js/video.novtt.js',
   	'video-js/video-js.css',
@@ -45,7 +45,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('yong:meteor-videojs','client');
-  api.addFiles('yong:meteor-videojs-tests.js','client');
+  api.use('keylase:meteor-videojs','client');
+  api.addFiles('meteor-videojs-tests.js','client');
 });
-
