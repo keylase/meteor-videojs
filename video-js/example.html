@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Video.js VAST Example</title>
+
+  <!-- <link href="http://vjs.zencdn.net/4.7.1/video-js.css" rel="stylesheet"> -->
+  <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+  <link href="lib/videojs-contrib-ads/videojs.ads.css" rel="stylesheet" type="text/css">
+
+  <link href="videojs.vast.css" rel="stylesheet" type="text/css">
+
+  <style type="text/css">
+    .description {
+      background-color:#eee;
+      border: 1px solid #777;
+      padding: 10px;
+      font-size: .8em;
+      line-height: 1.5em;
+      font-family: Verdana, sans-serif;
+    }
+    .example-video-container {
+      display: inline-block;
+    }
+  </style>
+  <!--[if lt IE 9]><script src="lib/es5.js"></script><![endif]-->
+  <script src="http://vjs.zencdn.net/4.12/video.js"></script>
+  <!-- // <script scr="bower_components/videojs/dist/video.js">
+  // </script> -->
+
+  <script src="lib/videojs-contrib-ads/videojs.ads.js"></script>
+
+  <script src="lib/vast-client.js"></script>
+  <script src="videojs.vast.js"></script>
+  <script src="videojs.hls.js"></script>
+  <script src="videojs-media-sources.js"></script>
+</head>
+<body>
+  <p class="description">Video.js VAST plugin examples.</p>
+
+  <div class="example-video-container">
+    <p class="description">No autoplay.</p>
+
+    <video id="vid1" class="video-js vjs-default-skin" controls preload="auto"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
+        data-setup='{}'
+        width='640'
+        height='400'
+        >
+      <!-- <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>
+      <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'> -->
+        <source src="http://btv-net.mediacdn.ru/TVB7/russia2/playlist.m3u8" type="application/x-mpegURL">
+      <p>Video Playback Not Supported</p>
+    </video>
+  </div>
+
+  <div class="example-video-container">
+    <p class="description">With autoplay.</p>
+
+    <video id="vid2" class="video-js vjs-default-skin" autoplay controls preload="auto"
+        poster="http://video-js.zencoder.com/oceans-clip.png"
+        data-setup='{}'
+        width='640'
+        height='400'
+        >
+      <!-- <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4'>
+      <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm'>-->
+      <!-- <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg'> -->
+      <source src="http://strekalovskiy.com/hls/sky.m3u8" type="application/x-mpegURL">
+      <p>Video Playback Not Supported</p>
+    </video>
+  </div>
+
+  <script>
+    var vid1 = videojs('vid1'),
+        vid2 = videojs('vid2');
+
+    vid1.muted(true);
+    vid1.ads();
+    vid1.vast({
+      url: 'http://videoads.theonion.com/vast/270.xml'
+    });
+
+    vid2.muted(true);
+    vid2.ads();
+    vid2.vast({
+      //url: 'http://ima3vpaid.appspot.com/?adTagUrl=http%3A%2F%2Fgoogleads.g.doubleclick.net%2Fpagead%2Fads%3Fad_type%3Dvideo_image_text_flash%26client%3Dca-video-pub-4968145218643279%26videoad_start_delay%3D0%26description_url%3Dhttp%253A%252F%252Fwww.youtube.com%26hl%3Den%26max_ad_duration%3D40000%26adtest%3Don'
+      url:'http://ads.adfox.ru/206858/getCode?pp=g&ps=cciu&p2=fezx&pfc=a&pfb=a&plp=a&pli=a&pop=a'
+    });
+  </script>
+
+</body>
+</html>
